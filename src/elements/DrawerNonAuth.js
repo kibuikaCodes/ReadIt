@@ -47,16 +47,16 @@ export default function DrawerComponentNonAuth() {
     >
       <List>
         {/* {['Home', 'Create Bell', 'Regular Bell', 'Impromptu Bell'].map((text, index) => ( */}
-          <ListItem button >
+          <ListItem button style={{marginTop: '1em'}}>
             <Link to={ROUTES.LANDING} className={classes.link}>Landing</Link> 
           </ListItem>
-          <ListItem button >
+          <ListItem button style={{marginTop: '1em'}}>
             <Link to={ROUTES.HOME} className={classes.link}>Home</Link>  
           </ListItem>
-          <ListItem button >
+          <ListItem button style={{marginTop: '1em'}}>
             <Link to={ROUTES.SIGN_IN} className={classes.link}>Sign In</Link>              
           </ListItem>
-          <ListItem button >
+          <ListItem button style={{marginTop: '1em'}}>
             <Link to={ROUTES.SIGN_UP} className={classes.link}>Sign up</Link>
           </ListItem>
           <Divider />

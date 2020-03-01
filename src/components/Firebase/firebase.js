@@ -49,5 +49,8 @@ class Firebase {
   // unit papers
   unitPapers = id => this.db.ref(`school/scit/units/${id}/files`);
 
+  // adding papers
+  addPaper = ({ id, name}) => this.db.ref(`school/scit/units/${name}/files/${id}`);
+
 }
 export default Firebase;

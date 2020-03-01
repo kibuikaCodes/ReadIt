@@ -11,6 +11,7 @@ import SignUp from '../SignUp';
 import AdminPage from '../Admin';
 import Unit from '../Unit';
 import Paper from '../Paper';
+import AddPaper from '../AddPaper';
 
 const App= () => (
             <Router>
@@ -24,6 +25,7 @@ const App= () => (
                 <Route  path={ROUTES.ADMIN} component={AdminPage} />
                 <Route path="/unit/:id" component={Unit} />
                 <Route exact path="/paper/:id" component={Paper} />
+                <Route exact path="/addpaper/:id" component={AddPaper} />
 
 
             </Router>
