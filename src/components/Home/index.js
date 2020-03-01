@@ -1,17 +1,77 @@
 import React from 'react'
-import { withAuthorization, AuthUserContext } from '../Session';
+import styled from 'styled-components';
+import { withAuthorization } from '../Session';
+import MainProvider from '../../state-management/providers/MainProvider';
+import { MainContext } from '../../state-management/Context';
 
+
+const HomeDiv = styled.div`
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-left: 4em;
+    margin-right: 4em;
+`;
+
+const Title = styled.div`
+    font-size: 2em;
+    font-weight: bold;
+    float: left;
+    
+`;
+
+const CardsDiv = styled.div`
+    display: grid; 
+    margin-left: 2em;
+    margin-right: 4em;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+`;
+
+const Card = styled.div`
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 20rem;
+    height: 6rem;
+    margin-top: 2em;
+    margin-left: 2em;
+    
+    
+
+    &: hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+`;
+
+const UnitName = styled.h1`
+    font-size: 1.5em;
+    float: center;
+    text-align: center;
+    justify-content: center;
+`;
 
 function Home() {
     return (
-        <AuthUserContext.Consumer>
-            {authUser => (
-                <div>
-                    <div>Home</div>
-                    <p>Accessible to every signed in user </p>
-                </div>
-            )}
-        </AuthUserContext.Consumer>
+        <MainProvider>
+            <MainContext.Consumer>
+                {context => (
+                    <HomeDiv>
+                        <div style={{ height: '10vh'}}>
+                            <Title>Home</Title>
+                        </div>
+                        <CardsDiv>
+                        {context.state.unitsLoading && <div>Loading ...</div>}
+                            {context.state.units.map(unit => (
+                                // <Link to={ROUTES.}>
+                                    <Card key={unit.id}><UnitName>{unit.name}</UnitName></Card>
+                                // </Link>
+                                
+                            ))}
+                        </CardsDiv>
+                    </HomeDiv>
+                )}
+            </MainContext.Consumer>
+        </MainProvider>
+        
         
     )
 }

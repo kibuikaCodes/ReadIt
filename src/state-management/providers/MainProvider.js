@@ -28,13 +28,33 @@ class MainProvider extends Component {
             userSignUpInfo: { ...INITIAL_USER_REG },
             signUpError: "",
             userSignInInfo: { ...INITIAL_USER_LOG_IN },
-            signInError: ""
+            signInError: "",
+            units: [],
+            unitLoading: false,
          }
     }
 
     componentDidMount() {
+        this.setState({ unitLoading: true})
+        this.setState({ loading: true });
+        this.props.firebase.units().on('value', snapshot => {
+          const unitsObject = snapshot.val();
+          const unitsList = Object.keys(unitsObject).map(key => ({
+            ...unitsObject[key],
+            id: key,
+          }));
+          this.setState({
+            units: unitsList,
+            unitsLoading: false,
+          });
+        });
         
     }
+
+//WARNING! To be deprecated in React v17. Use componentDidMount instead.
+componentWillMount() {
+    this.props.firebase.units().off();
+}
 
     // user registration details
 handleSignUpInput = (e) => {
