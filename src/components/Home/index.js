@@ -86,7 +86,7 @@ function Home() {
                         {context.state.unitsLoading && <div>Loading ...</div>}
                             {context.state.units.map(unit => (
                                 <Link to={`unit/${unit.id}`} style={{textDecoration: 'none', color: 'black'}}>
-                                    <Card key={unit.id}><UnitName>{unit.name}</UnitName></Card>
+                                    <Card key={unit.id}><UnitName>{unit.id}</UnitName></Card>
                                  </Link>
                                 
                             ))}
