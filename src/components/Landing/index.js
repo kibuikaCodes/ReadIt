@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 // import img from '../../images/bg-landing.jpg';
+import { breakpoints } from '../Media';
 
 const LandingDiv = styled.div`
     background: #1c92d2;  
@@ -25,12 +26,21 @@ const Content = styled.div`
     margin-left: 3em;
     margin-top: 7em;
     margin-right: 1.5em;
+
+    @media (min-width: ${breakpoints.mobileMax}) {
+        margin-top: 1em;
+    }
 `;
 
 const Title = styled.h1`
     font-size: 4em;
     font-weight: bolder;
     color: white;
+
+    @media (max-width: ${breakpoints.mobileMax}){
+        font-size: 3.5em;
+        
+    }
     
     
 `;
@@ -39,6 +49,10 @@ const Description = styled.p`
     font-size: 1.5em;
     color: white;
     
+    @media (max-width: ${breakpoints.mobileMax}){
+        font-size: 1.2em;
+        
+    }
 `;
 
 
