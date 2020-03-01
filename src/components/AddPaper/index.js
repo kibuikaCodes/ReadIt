@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
+import { TextField, Button } from '@material-ui/core';
+import styled from 'styled-components';
 import { withAuthorization } from '../Session';
 import { withFirebase } from '../Firebase';
 import firebase from 'firebase';
-
-
 import FileUploader from "react-firebase-file-uploader";
+import * as ROUTES from '../../constants/routes';
+
+const PageDiv = styled.div`
+    margin: 3em;
+`;
+
+const Form = styled.form`
+    display: inline-block;
+`;
  
 class AddPaper extends Component {
   state = {
     unitname: "",
-    year: 0,
+    year: '',
     avatar: "",
     isUploading: false,
     progress: 0,
@@ -42,43 +51,55 @@ class AddPaper extends Component {
       firebase.database().ref(`school/scit/units/${unitname}/files/${year}`).set({
           image: this.state.avatarURL,
           year: year
-      })
+      });
+      this.props.history.push(ROUTES.HOME);
   }
  
   render() {
     return (
-      <div>
-        <form>
-          <label>Unit name:</label>
-          <input
-            type="text"
-            value={this.state.unitname}
-            name="username"
-            onChange={this.handleChangeUnitname}
-          />
-          <label>Exam Paper Year:</label>
-          <input
-            type="text"
-            value={this.state.year}
-            name="username"
-            onChange={this.handleChangePaperyear}
-          />
-          <label>Avatar:</label>
-          {this.state.isUploading && <p>Progress: {this.state.progress}</p>}
-          {this.state.avatarURL && <a href={this.state.avatarURL} target='_blank' rel="noopener noreferrer">view</a>}
-          <FileUploader
-            accept="image/*"
-            name="avatar"
-            randomizeFilename
-            storageRef={this.props.firebase.addPaperImage()}
-            onUploadStart={this.handleUploadStart}
-            onUploadError={this.handleUploadError}
-            onUploadSuccess={this.handleUploadSuccess}
-            onProgress={this.handleProgress}
-          />
-        </form>
-        <button onClick={this.handlePaperUpload}>Upload Paper</button>
-      </div>
+      <PageDiv>
+          <div>
+                <Form>
+                <label>Unit name: </label>
+                <TextField
+                    type="text"
+                    value={this.state.unitname}
+                    name="username"
+                    onChange={this.handleChangeUnitname}
+                    style={{marginRight: '2em'}}
+                    
+                />
+                <label>Exam Paper Year: </label>
+                <TextField
+                    type="text"
+                    value={this.state.year}
+                    name="username"
+                    onChange={this.handleChangePaperyear}
+                    style={{marginRight: '2em'}}
+
+                />
+                
+                {this.state.isUploading && <p>Progress: {this.state.progress}</p>}
+                
+                <FileUploader
+                    accept="image/*"
+                    name="avatar"
+                    randomizeFilename
+                    storageRef={this.props.firebase.addPaperImage()}
+                    onUploadStart={this.handleUploadStart}
+                    onUploadError={this.handleUploadError}
+                    onUploadSuccess={this.handleUploadSuccess}
+                    onProgress={this.handleProgress}
+                />
+                </Form>
+                <label>View Image: </label>{this.state.avatarURL && <a href={this.state.avatarURL} target='_blank' rel="noopener noreferrer">view</a>}
+          </div>
+        
+        <div style={{margin: '2em'}}>
+        <Button onClick={this.handlePaperUpload} variant="contained" color='primary'>Upload Paper</Button>
+
+        </div>
+      </PageDiv>
     );
   }
 }
