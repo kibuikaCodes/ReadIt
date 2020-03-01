@@ -51,17 +51,17 @@ export default function DrawerComponentAuth() {
     >
       <List>
         {/* {['Home', 'Create Bell', 'Regular Bell', 'Impromptu Bell'].map((text, index) => ( */}
-          <ListItem button >
+          <ListItem button style={{marginTop: '1em'}}>
             <Link to={ROUTES.LANDING} className={classes.link}>Landing</Link> 
           </ListItem>
-          <ListItem button >
+          <ListItem button style={{marginTop: '1em'}}>
             <Link to={ROUTES.HOME} className={classes.link}>Home</Link>  
-          </ListItem>
-          {condition ? <ListItem button >
+          </ListItem >
+          {condition ? <ListItem button style={{marginTop: '1em'}}>
             <Link to={ROUTES.ADMIN} className={classes.link}>Admin</Link>  
           </ListItem> : <h6>{}</h6>}
           <Divider />
-          <ListItem button >
+          <ListItem button style={{marginTop: '1em'}}>
              <SignOut />  
           </ListItem>
           

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withFirebase } from '../Firebase';
+import { withAuthorization } from '../Session';
 
 class Paper extends Component {
     constructor(props) {
@@ -14,4 +16,6 @@ class Paper extends Component {
     }
 }
  
-export default Paper;
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(withFirebase(Paper));

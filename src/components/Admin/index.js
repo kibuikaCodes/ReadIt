@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 // import * as ROLES from '../../constants/roles';
 import { withAuthorization } from '../Session';
 import { withFirebase } from '../Firebase';
+import { Link } from 'react-router-dom';
+
 class AdminPage extends Component {
     constructor(props) {
       super(props);
       this.state = {
         loading: false,
         users: [],
+        units: [],
       };
     }
     componentDidMount() {
@@ -25,6 +28,16 @@ class AdminPage extends Component {
             loading: false,
           });
         });
+        this.props.firebase.units().on('value', snapshot => {
+          const unitsObject = snapshot.val();
+          const unitsList = Object.keys(unitsObject).map(key => ({
+            ...unitsObject[key],
+            id: key,
+          }));
+          this.setState({
+            units: unitsList,
+          });
+        });
     }
 
     // to avoid memory leaks
@@ -33,7 +46,7 @@ class AdminPage extends Component {
     }
 
     render() {
-        const { users, loading } = this.state;
+        const { users, loading, units } = this.state;
         return (
           <div style={{margin: '2em'}}>
             <h1>Admin</h1>
@@ -41,6 +54,10 @@ class AdminPage extends Component {
             <div>
               <h4>Users:</h4>
               <UserList users={users} />
+            </div>
+            <div>
+              <h4>units:</h4>
+              <UnitList units={units} />
             </div>
             
           </div>
@@ -56,6 +73,22 @@ class AdminPage extends Component {
             </span>
             
           </li>
+        ))}
+      </ul>
+    );
+
+    const UnitList = ({ units }) => (
+      <ul>
+        {units.map(units => (
+            <Link to={`/addpaper/${units.id}`}>
+            <li key={units.id}>
+
+              <span>
+                {units.name}
+              </span>
+          </li>
+          </Link>
+
         ))}
       </ul>
     );
