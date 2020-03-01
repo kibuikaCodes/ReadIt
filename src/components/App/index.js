@@ -9,6 +9,7 @@ import Landing from '../Landing';
 import Home from '../Home';
 import SignUp from '../SignUp';
 import AdminPage from '../Admin';
+import Unit from '../Unit';
 
 const App= () => (
             <Router>
@@ -20,6 +21,7 @@ const App= () => (
                 <Route  path={ROUTES.SIGN_IN} component={SignIn} />
                 <Route  path={ROUTES.SIGN_UP} component={SignUp} />
                 <Route  path={ROUTES.ADMIN} component={AdminPage} />
+                <Route path="/unit/:id" component={Unit} />
 
 
             </Router>
