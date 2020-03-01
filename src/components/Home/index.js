@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { withAuthorization } from '../Session';
 import MainProvider from '../../state-management/providers/MainProvider';
 import { MainContext } from '../../state-management/Context';
+import { Link } from 'react-router-dom';
 
 
 const HomeDiv = styled.div`
@@ -47,6 +48,7 @@ const UnitName = styled.h1`
     float: center;
     text-align: center;
     justify-content: center;
+    margin-top: 1.5em;
 `;
 
 function Home() {
@@ -61,9 +63,9 @@ function Home() {
                         <CardsDiv>
                         {context.state.unitsLoading && <div>Loading ...</div>}
                             {context.state.units.map(unit => (
-                                // <Link to={ROUTES.}>
+                                <Link to={`unit/${unit.id}`} style={{textDecoration: 'none', color: 'black'}}>
                                     <Card key={unit.id}><UnitName>{unit.name}</UnitName></Card>
-                                // </Link>
+                                 </Link>
                                 
                             ))}
                         </CardsDiv>
