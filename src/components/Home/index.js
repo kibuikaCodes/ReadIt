@@ -4,6 +4,7 @@ import { withAuthorization } from '../Session';
 import MainProvider from '../../state-management/providers/MainProvider';
 import { MainContext } from '../../state-management/Context';
 import { Link } from 'react-router-dom';
+import { breakpoints } from '../Media';
 
 
 const HomeDiv = styled.div`
@@ -11,6 +12,11 @@ const HomeDiv = styled.div`
     margin-bottom: 2em;
     margin-left: 4em;
     margin-right: 4em;
+
+
+    @media (max-width: ${breakpoints.mobileMax}) {
+        margin-left: 1em;
+    }
 `;
 
 const Title = styled.div`
@@ -26,6 +32,14 @@ const CardsDiv = styled.div`
     margin-right: 4em;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 20px;
+
+    @media (max-width: ${breakpoints.mobileMax}) {
+        margin-left: 0.3em;
+        margin-right: 0.3em;
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-gap: 20px;
+    }
 `;
 
 const Card = styled.div`
@@ -40,6 +54,11 @@ const Card = styled.div`
 
     &: hover {
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+    @media (max-width:${breakpoints.mobileMax}){
+        width: 9em;
+        margin-left: 1em;
     }
 `;
 

@@ -30,12 +30,12 @@ class MainProvider extends Component {
             userSignInInfo: { ...INITIAL_USER_LOG_IN },
             signInError: "",
             units: [],
-            unitLoading: false,
+            unitsLoading: false,
          }
     }
 
     componentDidMount() {
-        this.setState({ unitLoading: true})
+        this.setState({ unitsLoading: true});
         this.setState({ loading: true });
         this.props.firebase.units().on('value', snapshot => {
           const unitsObject = snapshot.val();
