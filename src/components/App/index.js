@@ -25,7 +25,8 @@ const App= () => (
                 <Route  path={ROUTES.ADMIN} component={AdminPage} />
                 <Route path="/unit/:id" component={Unit} />
                 <Route exact path="/paper/:id" component={Paper} />
-                <Route exact path="/addpaper/:id" component={AddPaper} />
+                <Route exact path="/addpaper" component={AddPaper} />
+                
 
 
             </Router>

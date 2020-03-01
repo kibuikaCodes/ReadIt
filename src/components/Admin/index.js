@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import * as ROLES from '../../constants/roles';
+import Button from '@material-ui/core/Button';
 import { withAuthorization } from '../Session';
 import { withFirebase } from '../Firebase';
 import { Link } from 'react-router-dom';
@@ -52,13 +53,16 @@ class AdminPage extends Component {
             <h1>Admin</h1>
             {loading && <div>Loading ...</div>}
             <div>
-              <h4>Users:</h4>
+              <h4>All Users:</h4>
               <UserList users={users} />
             </div>
             <div>
-              <h4>units:</h4>
+              <h4>All Units:</h4>
               <UnitList units={units} />
             </div>
+            <Link to='/addpaper' style={{textDecoration: 'none'}}>
+              <Button variant='contained' color='primary'>Add New Paper</Button>
+            </Link>
             
           </div>
         );
@@ -80,15 +84,13 @@ class AdminPage extends Component {
     const UnitList = ({ units }) => (
       <ul>
         {units.map(units => (
-            <Link to={`/addpaper/${units.id}`}>
             <li key={units.id}>
 
               <span>
-                {units.name}
+                {units.id}
               </span>
           </li>
-          </Link>
-
+          
         ))}
       </ul>
     );
