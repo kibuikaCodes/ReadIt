@@ -127,11 +127,13 @@ componentDidMount() {
                                 
                             }
                             {this.state.unitDetails.map(unit => (
+                                <Link to={`/paper/${unit.year}`} style={{textDecoration: 'none', color: 'black'}}>
                                 <Card key={unit.id}>
                                     <CardSection></CardSection>
                                     <hr />
                                     <CardSubtitle >{unit.year}</CardSubtitle>
                                 </Card>
+                                </Link>
                             ))}
                                     
                                     
