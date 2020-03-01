@@ -49,6 +49,8 @@ const Card = styled.div`
     height: 6rem;
     margin-top: 2em;
     margin-left: 2em;
+    background-color: #e6eff2;
+
     
     
 
@@ -75,6 +77,7 @@ function Home() {
         <MainProvider>
             <MainContext.Consumer>
                 {context => (
+                    
                     <HomeDiv>
                         <div style={{ height: '10vh'}}>
                             <Title>Home</Title>
