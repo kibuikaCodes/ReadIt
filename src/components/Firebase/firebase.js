@@ -2,6 +2,7 @@
 import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import 'firebase/storage';
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -17,6 +18,7 @@ class Firebase {
     // instantiating the auth package
     this.auth = app.auth();
     this.db = app.database();
+    this.store = app.storage();
   }
 
   // AUTH API
@@ -51,6 +53,7 @@ class Firebase {
 
   // adding papers
   addPaper = ({ id, name}) => this.db.ref(`school/scit/units/${name}/files/${id}`);
+  addPaperImage = () => this.store.ref(`school/scit/papers/`);
 
 }
 export default Firebase;

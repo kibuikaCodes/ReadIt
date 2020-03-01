@@ -70,6 +70,11 @@ const CardSubtitle = styled.p`
     margin-left: 2em;
 `;
 
+const Image = styled.img`
+    width: 100%;
+    height: 100%
+`;
+
 
 
 class Unit extends Component {
@@ -116,7 +121,7 @@ componentDidMount() {
         return ( 
                     <HomeDiv>
                         <div style={{ height: '10vh'}}>
-                            <Title>{this.state.unitName.name}</Title>
+                            <Title>{this.state.unitName.id}</Title>
                         </div>
                         <CardsDiv>
                             {this.state.unitDetails.length === 0 && 
@@ -127,13 +132,13 @@ componentDidMount() {
                                 
                             }
                             {this.state.unitDetails.map(unit => (
-                                <Link to={`/paper/${unit.year}`} style={{textDecoration: 'none', color: 'black'}}>
+                                <a href={unit.image} target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none', color: 'black'}}>
                                 <Card key={unit.id}>
-                                    <CardSection></CardSection>
+                                    <CardSection><Image src={unit.image} alt=""/></CardSection>
                                     <hr />
                                     <CardSubtitle >{unit.year}</CardSubtitle>
                                 </Card>
-                                </Link>
+                                </a>
                             ))}
                                     
                                     
