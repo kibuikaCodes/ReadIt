@@ -50,7 +50,7 @@ function Landing() {
             <Content>
                 <Title>Welcome to Tusome</Title>
                 <Description>Get access to all School of Computing Past Papers</Description>
-                <Link to={ROUTES.SIGN_IN} style={{ textDecoration: 'none'}}><Button variant="contained" color="primary" style={{  marginTop: '2em'}}>
+                <Link to={ROUTES.HOME} style={{ textDecoration: 'none'}}><Button variant="contained" color="primary" style={{  marginTop: '2em'}}>
                     Get Started
                 </Button></Link>
                 
