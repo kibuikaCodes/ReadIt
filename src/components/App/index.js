@@ -10,6 +10,7 @@ import Home from '../Home';
 import SignUp from '../SignUp';
 import AdminPage from '../Admin';
 import Unit from '../Unit';
+import Paper from '../Paper';
 
 const App= () => (
             <Router>
@@ -22,6 +23,7 @@ const App= () => (
                 <Route  path={ROUTES.SIGN_UP} component={SignUp} />
                 <Route  path={ROUTES.ADMIN} component={AdminPage} />
                 <Route path="/unit/:id" component={Unit} />
+                <Route exact path="/paper/:id" component={Paper} />
 
 
             </Router>
