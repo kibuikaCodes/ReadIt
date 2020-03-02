@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 // import Checkbox from '@material-ui/core/Checkbox';
 // import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
+import Alert from '@material-ui/lab/Alert';
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -66,7 +67,9 @@ export default function SignIn() {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            {context.state.signInError != null ? <h5 style={{color: 'red'}}>{context.state.signInError.message}</h5> : <h6>{}</h6>}
+            {context.state.errorSignIn && <div><Alert variant="filled" severity="error">
+              {context.state.signInError.message}
+            </Alert></div> }
             <form className={classes.form} noValidate>
               <TextField
                 variant="outlined"
@@ -112,11 +115,11 @@ export default function SignIn() {
               {/* </Link> */}
               
                <Grid container>
-                {/*<Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
+                <Grid item xs>
+                  <Link to={ROUTES.PASSWORD_FORGET} variant="body2" style={{textDecoration: 'none'}}>
+                    {"Forgot password?"}
                   </Link>
-                </Grid> */}
+                </Grid>
                 <Grid item>
                   <Link to={ROUTES.SIGN_UP} variant="body2" style={{textDecoration: 'none'}}>
                     {"Don't have an account? Sign Up"}

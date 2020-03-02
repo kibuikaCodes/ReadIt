@@ -29,8 +29,10 @@ class MainProvider extends Component {
             signUpError: "",
             userSignInInfo: { ...INITIAL_USER_LOG_IN },
             signInError: "",
+            errorSignIn: false,
             units: [],
             unitsLoading: false,
+            userDetails: {}
          }
     }
 
@@ -48,6 +50,17 @@ class MainProvider extends Component {
             unitsLoading: false,
           });
         });
+        this.props.firebase.user(authUser.uid)
+            .on('value', (snapshot) => {
+            var user = snapshot.val();
+            if (unit) {
+                this.setState({
+                userDetails: user,
+                });
+
+            } else {
+            }
+            }); 
         
     }
 
@@ -124,7 +137,8 @@ handleUserSignIn = e => {
                 this.props.history.push(ROUTES.HOME);
             })
             .catch(error => {
-                this.setState({ signInError: error })
+                this.setState({ signInError: error,
+                        errorSignIn: true })
             });
         
 }

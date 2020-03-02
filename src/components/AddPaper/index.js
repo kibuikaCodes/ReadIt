@@ -64,6 +64,7 @@ class AddPaper extends Component {
     return (
       <PageDiv>
           <div>
+<<<<<<< Updated upstream
                 <Form className="form">
                   <label className="form-labels">Unit name: </label>
                   <TextField
@@ -83,6 +84,25 @@ class AddPaper extends Component {
                       name="username"
                       onChange={this.handleChangePaperyear}
                       style={{marginRight: '2em'}}
+=======
+                <Form>
+                <label>Unit name: </label>
+                <TextField
+                    type="text"
+                    value={this.state.unitname}
+                    name="username"
+                    onChange={this.handleChangeUnitname}
+                    style={{marginRight: '2em'}}
+                    
+                />
+                <label >Exam Paper Year: </label>
+                <TextField
+                    type="text"
+                    value={this.state.year}
+                    name="username"
+                    onChange={this.handleChangePaperyear}
+                    style={{marginRight: '2em'}}
+>>>>>>> Stashed changes
 
                   />
                   

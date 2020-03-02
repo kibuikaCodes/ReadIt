@@ -35,9 +35,7 @@ const CardsDiv = styled.div`
     @media (max-width: ${breakpoints.mobileMax}) {
         margin-left: 0em;
         margin-right: 0em;
-        display: grid; 
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    grid-gap: 20px;
+        
     }
 `;
 
@@ -56,8 +54,9 @@ const Card = styled.div`
     }
 
     @media (max-width:${breakpoints.mobileMax}){
-        width: 9em;
-        margin-left: 0.5em;
+        width: 17em;
+        margin-left: 1em;
+        margin-right: 1em;
     }
 `;
 
