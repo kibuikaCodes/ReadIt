@@ -54,6 +54,7 @@ export default function DrawerComponentAuth() {
   authUser && authUser.email === 'kibuika1@gmail.com';
 
   const sideList = side => (
+<<<<<<< Updated upstream
     <MainProvider>
       <MainContext.Consumer>
       {context => (
@@ -95,6 +96,32 @@ export default function DrawerComponentAuth() {
           </List>
         </div>
       )}
+=======
+    <div
+      className={classes.list}
+      role="presentation"
+      onClick={toggleDrawer(side, false)}
+      onKeyDown={toggleDrawer(side, false)}
+    >
+      <List>
+        {/* {['Home', 'Create Bell', 'Regular Bell', 'Impromptu Bell'].map((text, index) => ( */}
+          <ListItem button style={{marginTop: '1em'}}>
+            <Link to={ROUTES.LANDING} className={classes.link}>Landing</Link> 
+          </ListItem>
+          <ListItem button style={{marginTop: '1em'}}>
+            <Link to={ROUTES.HOME} className={classes.link}>Home</Link>  
+          </ListItem >
+          <Divider />
+          <ListItem button style={{marginTop: '1em'}}>
+             <SignOut />  
+          </ListItem>
+          
+            
+            
+        {/* ))} */}
+      </List>
+      
+>>>>>>> Stashed changes
       
     </MainContext.Consumer>
     </MainProvider>

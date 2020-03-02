@@ -12,6 +12,7 @@ import AdminPage from '../Admin';
 import Unit from '../Unit';
 import Paper from '../Paper';
 import AddPaper from '../AddPaper';
+import PasswordForget from '../PasswordForget';
 
 const App= () => (
             <Router>
@@ -26,6 +27,7 @@ const App= () => (
                 <Route path="/unit/:id" component={Unit} />
                 <Route exact path="/paper/:id" component={Paper} />
                 <Route exact path="/addpaper" component={AddPaper} />
+                <Route path='/pw-forget' component={PasswordForget} />
                 
 
 
