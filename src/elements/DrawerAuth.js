@@ -10,8 +10,8 @@ import Avatar from '@material-ui/core/Avatar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 //import ListItemText from '@material-ui/core/ListItemText';
 import { deepOrange } from '@material-ui/core/colors';
-import MainProvider from '../state-management/providers/MainProvider';
-import {MainContext} from '../state-management/Context'
+// import MainProvider from '../state-management/providers/MainProvider';
+// import {MainContext} from '../state-management/Context'
 //import { withFirebase } from "../components/Firebase";
 import SignOut from '../../src/components/SignOut';
 import * as ROUTES from '../constants/routes';
@@ -54,10 +54,9 @@ export default function DrawerComponentAuth() {
   authUser && authUser.email === 'kibuika1@gmail.com';
 
   const sideList = side => (
-<<<<<<< Updated upstream
-    <MainProvider>
-      <MainContext.Consumer>
-      {context => (
+    
+      
+        <div>
         <div
           className={classes.list}
           role="presentation"
@@ -87,7 +86,7 @@ export default function DrawerComponentAuth() {
                 <ListItemIcon>
                   <Avatar className={classes.orange}>U</Avatar>
                 </ListItemIcon>
-                <Link to="/user" className={classes.link}>{context.state.userDetails.firstName}</Link>
+                <Link to="/user" className={classes.link}>User</Link>
               </ListItem>
               <ListItem button>
                 <SignOut />
@@ -95,36 +94,11 @@ export default function DrawerComponentAuth() {
             {/* ))} */}
           </List>
         </div>
-      )}
-=======
-    <div
-      className={classes.list}
-      role="presentation"
-      onClick={toggleDrawer(side, false)}
-      onKeyDown={toggleDrawer(side, false)}
-    >
-      <List>
-        {/* {['Home', 'Create Bell', 'Regular Bell', 'Impromptu Bell'].map((text, index) => ( */}
-          <ListItem button style={{marginTop: '1em'}}>
-            <Link to={ROUTES.LANDING} className={classes.link}>Landing</Link> 
-          </ListItem>
-          <ListItem button style={{marginTop: '1em'}}>
-            <Link to={ROUTES.HOME} className={classes.link}>Home</Link>  
-          </ListItem >
-          <Divider />
-          <ListItem button style={{marginTop: '1em'}}>
-             <SignOut />  
-          </ListItem>
-          
-            
-            
-        {/* ))} */}
-      </List>
       
->>>>>>> Stashed changes
       
-    </MainContext.Consumer>
-    </MainProvider>
+</div>
+     
+    
 
     
   );

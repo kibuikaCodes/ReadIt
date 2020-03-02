@@ -50,17 +50,7 @@ class MainProvider extends Component {
             unitsLoading: false,
           });
         });
-        this.props.firebase.user(authUser.uid)
-            .on('value', (snapshot) => {
-            var user = snapshot.val();
-            if (unit) {
-                this.setState({
-                userDetails: user,
-                });
-
-            } else {
-            }
-            }); 
+        
         
     }
 
