@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.progress {
+  font-weight: 500;
+  color: blue;
+}
+
+.file-uploader {
+  margin-right: 2em;
+}
+
+/** Form */
+.form-control {
+  padding-top: 2em;
+}
+
+.form-labels {
+  padding-top: 1.5em;
+}

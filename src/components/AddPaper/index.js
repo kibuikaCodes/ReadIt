@@ -6,13 +6,18 @@ import { withFirebase } from '../Firebase';
 import firebase from 'firebase';
 import FileUploader from "react-firebase-file-uploader";
 import * as ROUTES from '../../constants/routes';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const PageDiv = styled.div`
     margin: 3em;
+    padding: 3em;
+    width: 70%;
 `;
 
 const Form = styled.form`
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5em;
 `;
  
 class AddPaper extends Component {
@@ -59,38 +64,41 @@ class AddPaper extends Component {
     return (
       <PageDiv>
           <div>
-                <Form>
-                <label>Unit name: </label>
-                <TextField
-                    type="text"
-                    value={this.state.unitname}
-                    name="username"
-                    onChange={this.handleChangeUnitname}
-                    style={{marginRight: '2em'}}
-                    
-                />
-                <label>Exam Paper Year: </label>
-                <TextField
-                    type="text"
-                    value={this.state.year}
-                    name="username"
-                    onChange={this.handleChangePaperyear}
-                    style={{marginRight: '2em'}}
+                <Form className="form">
+                  <label className="form-labels">Unit name: </label>
+                  <TextField
+                      className="form-control"
+                      type="text"
+                      value={this.state.unitname}
+                      name="username"
+                      onChange={this.handleChangeUnitname}
+                      style={{marginRight: '2em'}}
+                      
+                  />
+                  <label className="form-labels">Exam Paper Year: </label>
+                  <TextField
+                      className="form-control"
+                      type="text"
+                      value={this.state.year}
+                      name="username"
+                      onChange={this.handleChangePaperyear}
+                      style={{marginRight: '2em'}}
 
-                />
-                
-                {this.state.isUploading && <p>Progress: {this.state.progress}</p>}
-                
-                <FileUploader
-                    accept="image/*"
-                    name="avatar"
-                    randomizeFilename
-                    storageRef={this.props.firebase.addPaperImage()}
-                    onUploadStart={this.handleUploadStart}
-                    onUploadError={this.handleUploadError}
-                    onUploadSuccess={this.handleUploadSuccess}
-                    onProgress={this.handleProgress}
-                />
+                  />
+                  
+                  {this.state.isUploading && <p className="progress">Progress: <LinearProgress className="" valueBuffer={this.state.progress}/></p>}
+                  
+                  <FileUploader
+                      className="form-labels"
+                      accept="image/*"
+                      name="avatar"
+                      randomizeFilename
+                      storageRef={this.props.firebase.addPaperImage()}
+                      onUploadStart={this.handleUploadStart}
+                      onUploadError={this.handleUploadError}
+                      onUploadSuccess={this.handleUploadSuccess}
+                      onProgress={this.handleProgress}
+                  />
                 </Form>
                 <label>View Image: </label>{this.state.avatarURL && <a href={this.state.avatarURL} target='_blank' rel="noopener noreferrer">view</a>}
           </div>
