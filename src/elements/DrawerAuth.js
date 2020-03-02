@@ -78,7 +78,7 @@ export default function DrawerComponentAuth() {
 
   return (
     <div>
-      <Button onClick={toggleDrawer('right', true)} style={{color: 'blue', fontWeight: "bold"}}>Menu</Button>
+      <Button onClick={toggleDrawer('right', true)} style={{color: 'blue', fontWeight: "bold"}}><img src="https://img.icons8.com/clouds/100/000000/menu.png" alt="menu icon" /></Button>
       <Drawer anchor="right" open={state.right} onClose={toggleDrawer('right', false)}>
         {sideList('right')}
       </Drawer>
