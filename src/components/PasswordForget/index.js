@@ -14,6 +14,7 @@ const MainDiv = styled.div`
 
 
 
+
 class PasswordForget extends Component {
     constructor(props) {
         super(props);
@@ -23,6 +24,8 @@ class PasswordForget extends Component {
             info: false
          }
     }
+
+
 
     handleEmail = e => {
         e.preventDefault();
@@ -41,6 +44,8 @@ class PasswordForget extends Component {
         
     }
     render() { 
+        const isInvalid = this.state.email === '';
+
         return ( 
             <MainDiv>
                 {this.state.info && <Alert variant="filled" severity="success">
@@ -66,6 +71,7 @@ class PasswordForget extends Component {
                   halfWidth
                   variant="contained"
                   color="primary"
+                  disabled={isInvalid}
                   onClick={this.handlePasswordReset}
                 >
                   Send Password Reset email
