@@ -53,6 +53,7 @@ class Firebase {
 
   // adding papers
   addPaper = ({ id, name}) => this.db.ref(`school/scit/units/${name}/files/${id}`);
+  // storing exam images in storage
   addPaperImage = () => this.store.ref(`school/scit/papers/`);
 
 }
