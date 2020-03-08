@@ -115,6 +115,12 @@ componentDidMount() {
     
 }
 
+componentWillUnmount (){
+    this.props.firebase.unit().off();
+
+    this.props.firebase.unitPapers().off();
+}
+
     render() { 
 
         return ( 

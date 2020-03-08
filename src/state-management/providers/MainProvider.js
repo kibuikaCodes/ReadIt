@@ -54,8 +54,7 @@ class MainProvider extends Component {
         
     }
 
-//WARNING! To be deprecated in React v17. Use componentDidMount instead.
-componentWillMount() {
+componentWillUnmount() {
     this.props.firebase.units().off();
 }
 

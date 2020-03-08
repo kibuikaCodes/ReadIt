@@ -54,8 +54,6 @@ export default function DrawerComponentAuth() {
   authUser && authUser.email === 'kibuika1@gmail.com';
 
   const sideList = side => (
-    
-      
         <div>
         <div
           className={classes.list}

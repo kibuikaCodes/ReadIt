@@ -44,6 +44,8 @@ class AdminPage extends Component {
     // to avoid memory leaks
     componentWillUnmount() {
         this.props.firebase.users().off();
+
+        this.props.firebase.units().off();
     }
 
     render() {
