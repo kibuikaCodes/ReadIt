@@ -32,13 +32,14 @@ class MainProvider extends Component {
             errorSignIn: false,
             units: [],
             unitsLoading: false,
-            userDetails: {}
+            currentUserID: '',
+            userDetails: {},
          }
     }
 
     componentDidMount() {
         this.setState({ unitsLoading: true});
-        this.setState({ loading: true });
+        this.setState({ loading: true });        
         this.props.firebase.units().on('value', snapshot => {
           const unitsObject = snapshot.val();
           const unitsList = Object.keys(unitsObject).map(key => ({
@@ -50,6 +51,10 @@ class MainProvider extends Component {
             unitsLoading: false,
           });
         });
+
+        this.props.firebase.user().once('value', snapshot => {
+            console.log(snapshot.val())
+        })
         
         
     }
@@ -93,6 +98,7 @@ handleUserSignUp = e => {
             })
             .then(authUser => {
                 this.setState({ ...INITIAL_USER_REG });
+                localStorage.setItem('userID', this.state.userSignUpInfo.email);
                 this.props.history.push(ROUTES.HOME);
             })
             .catch(error => {
@@ -122,7 +128,11 @@ handleUserSignIn = e => {
     this.props.firebase
         .doLogin(this.state.userSignInInfo.email, this.state.userSignInInfo.password)
             .then(authUser => {
+                const { uid } = authUser.user.uid;
+                localStorage.setItem('userID', this.state.userSignInInfo.email);
                 this.setState({ ...INITIAL_USER_LOG_IN });
+                this.setState({currentUserID: uid});
+                console.log(`userID: ${authUser.user.uid}`)
                 this.props.history.push(ROUTES.HOME);
             })
             .catch(error => {
