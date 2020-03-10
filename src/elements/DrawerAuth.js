@@ -84,10 +84,10 @@ export default function DrawerComponentAuth() {
                 {/* <MainContext.Consumer> */}
                   {/* {context => ( */}
                     <ListItem button>
-                    <ListItemIcon>
+                    {/* <ListItemIcon>
                       <Avatar className={classes.orange}>U</Avatar>
-                    </ListItemIcon>
-                  <Link to="/user" className={classes.link}>{userEmail}</Link>
+                    </ListItemIcon> */}
+                  <Link to="/user" className={classes.link} style={{fontWeight: 'bolder', marginTop: '1em', marginBottom: '1em'}}>{userEmail}</Link>
                   </ListItem>
                   
                   {/* )} */}
