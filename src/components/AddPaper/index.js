@@ -29,17 +29,26 @@ class AddPaper extends Component {
     progress: 0,
     avatarURL: ""
   };
- 
+
+ // method that handles the name of the unit
   handleChangeUnitname = event =>
     this.setState({ unitname: event.target.value });
-    handleChangePaperyear = event =>
+
+  // method that handles the year the exam was done.
+  handleChangePaperyear = event =>
     this.setState({ year: event.target.value });
+
+  // checks the upload progress.
   handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
   handleProgress = progress => this.setState({ progress });
+
+  // checks for errors while uploading
   handleUploadError = error => {
     this.setState({ isUploading: false });
     console.error(error);
   };
+
+  // uploads the image to firebase storage.
   handleUploadSuccess = filename => {
     this.setState({ avatar: filename, progress: 100, isUploading: false });
     this.props.firebase.addPaperImage()
@@ -50,6 +59,7 @@ class AddPaper extends Component {
     
   };
 
+  // uploads the exam details to firebase real-time database.
   handlePaperUpload = e => {
       e.preventDefault();
       const { unitname, year } = this.state;

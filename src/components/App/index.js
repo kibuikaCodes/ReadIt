@@ -25,8 +25,8 @@ const App= () => (
                 <Route  path={ROUTES.SIGN_UP} component={SignUp} />
                 <Route  path={ROUTES.ADMIN} component={AdminPage} />
                 <Route path="/unit/:id" component={Unit} />
-                <Route exact path="/paper/:id" component={Paper} />
-                <Route exact path="/addpaper" component={AddPaper} />
+                <Route path="/paper/:id" component={Paper} />
+                <Route path="/addpaper" component={AddPaper} />
                 <Route path='/pw-forget' component={PasswordForget} />
                 
 

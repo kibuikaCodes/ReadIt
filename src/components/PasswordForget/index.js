@@ -26,12 +26,13 @@ class PasswordForget extends Component {
     }
 
 
-
+// takes the email value
     handleEmail = e => {
         e.preventDefault();
         this.setState({ email: e.target.value});
     }
 
+    // sends a reset link to the email
     handlePasswordReset = e => {
         e.preventDefault();
         this.props.firebase
@@ -44,6 +45,7 @@ class PasswordForget extends Component {
         
     }
     render() { 
+        // checks if the user has entered an input
         const isInvalid = this.state.email === '';
 
         return ( 

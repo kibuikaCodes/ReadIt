@@ -12,13 +12,13 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import { deepOrange } from '@material-ui/core/colors';
 // import MainProvider from '../state-management/providers/MainProvider';
 // import {MainContext} from '../state-management/Context'
-//import { withFirebase } from "../components/Firebase";
+// import { withFirebase } from "../components/Firebase";
 import SignOut from '../../src/components/SignOut';
 import * as ROUTES from '../constants/routes';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 // import { withAuthorization } from '../components/Session';
 
-
+const userEmail = localStorage.getItem('userID');
 
 const useStyles = makeStyles({
   list: {
@@ -54,8 +54,6 @@ export default function DrawerComponentAuth() {
   authUser && authUser.email === 'kibuika1@gmail.com';
 
   const sideList = side => (
-    
-      
         <div>
         <div
           className={classes.list}
@@ -82,12 +80,19 @@ export default function DrawerComponentAuth() {
                 <Link to={ROUTES.ADMIN} className={classes.link}>Admin</Link>  
               </ListItem> : <h6>{}</h6>}
               <Divider />
-              <ListItem button>
-                <ListItemIcon>
-                  <Avatar className={classes.orange}>U</Avatar>
-                </ListItemIcon>
-                <Link to="/user" className={classes.link}>User</Link>
-              </ListItem>
+              {/* <MainProvider> */}
+                {/* <MainContext.Consumer> */}
+                  {/* {context => ( */}
+                    <ListItem button>
+                    {/* <ListItemIcon>
+                      <Avatar className={classes.orange}>U</Avatar>
+                    </ListItemIcon> */}
+                  <Link to="/user" className={classes.link} style={{fontWeight: 'bolder', marginTop: '1em', marginBottom: '1em'}}>{userEmail}</Link>
+                  </ListItem>
+                  
+                  {/* )} */}
+                {/* </MainContext.Consumer> */}
+              {/* </MainProvider> */}
               <ListItem button>
                 <SignOut />
               </ListItem>

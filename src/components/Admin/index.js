@@ -16,6 +16,7 @@ class AdminPage extends Component {
     }
     componentDidMount() {
         this.setState({ loading: true });
+        // fetching all existing users
         this.props.firebase.users().on('value', snapshot => {
           const usersObject = snapshot.val();
           const usersList = Object.keys(usersObject).map(key => ({
@@ -29,6 +30,7 @@ class AdminPage extends Component {
             loading: false,
           });
         });
+        // fetching all existing units in the database
         this.props.firebase.units().on('value', snapshot => {
           const unitsObject = snapshot.val();
           const unitsList = Object.keys(unitsObject).map(key => ({
@@ -44,6 +46,8 @@ class AdminPage extends Component {
     // to avoid memory leaks
     componentWillUnmount() {
         this.props.firebase.users().off();
+
+        this.props.firebase.units().off();
     }
 
     render() {

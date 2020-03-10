@@ -99,6 +99,7 @@ componentDidMount() {
       } else {
       }
     }); 
+    // fetching all exams uploaded for that unit.
     this.props.firebase.unitPapers(this.props.match.params.id).on('value', snapshot => {
         const unitObject = snapshot.val();
         const unitList = Object.keys(unitObject).map(key => ({
@@ -113,6 +114,12 @@ componentDidMount() {
         });
       });
     
+}
+
+componentWillUnmount (){
+    this.props.firebase.unit().off();
+
+    this.props.firebase.unitPapers().off();
 }
 
     render() { 
